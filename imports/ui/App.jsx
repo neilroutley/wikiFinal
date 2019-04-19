@@ -7,7 +7,10 @@ export default class App extends Component {
 
 		this.state = {
 			err: "",
-			data: [],
+			title: "",
+			content: "",
+			links: [],
+			history: []
 		};
 	}
 
@@ -17,32 +20,55 @@ export default class App extends Component {
 		document.getElementById("search").value = "";
 		if (searchText.length > 0) {
 			this.callApi(searchText);
-
+			this.setState({ history: [...this.state.history, searchText] });
 		}
 	}
 
-	async callApi(query) {
-		// Meteor.call("getData", { query: query }, (err, data) => {
-		//   if (err) {
-		//     this.setState = {
-		//       err: err
-		//     };
-		//     return;
-		//   }
-		//   this.setState({
-		//     data: data
-		//   });
-		// });
-		console.log(query);
+	callApi(query) {
+		Meteor.call("getData", query, (err, data) => {
+			if (err) {
+				this.setState = {
+					err: err
+				};
+				return;
+			}
+			console.log("data: ", data);
+			this.setState({
+				title: data.title,
+				content: data.text,
+				links: data.links
+			});
+		});
 	}
 
-	renderContent(){
-		console.log("rendering content: ", this.state.data);
+	renderHistory(){
+		return this.state.history.map((p, i) => (
+			<button key={i} alt={p}>
+				{p}
+			</button>
+		));
+	}
+
+	renderLinks() {
+		// console.log("rendering links: ", this.state.links);
+		return this.state.links.map((p, i) => (
+			<button key={i} alt={p["*"]}>
+				{p["*"]}
+			</button>
+		));
+	}
+
+	renderContent() {
+		return (
+			<span
+				dangerouslySetInnerHTML={{ __html: this.state.content["*"] }}
+			/>
+		);
 	}
 
 	render() {
-		console.log("App props: ", this.props);
-		console.log("App state: ", this.state)
+		// console.log("App props: ", this.props);
+		// console.log("App state: ", this.state);
 		return (
 			<div className="container">
 				{this.state.err ? <div>Error! {this.state.err}</div> : ""}
@@ -61,9 +87,11 @@ export default class App extends Component {
 				</form>
 				<div>
 					<h2>History</h2>
+					<div className="links">{this.renderHistory()}</div>
 				</div>
 				<div>
 					<h3>Links</h3>
+					<div className="links">{this.renderLinks()}</div>
 				</div>
 
 				<div>
