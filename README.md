@@ -32,3 +32,7 @@ This project is licensed under the MIT License - please see the [LICENSE](LICENS
 ## Author
 
 -   [Neil Routley](https://github.com/neilroutley)
+
+## Grading
+
+- Submitted in class with no extended time or take home.

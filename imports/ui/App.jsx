@@ -52,7 +52,7 @@ export default class App extends Component {
 	renderLinks() {
 		// console.log("rendering links: ", this.state.links);
 		return this.state.links.map((p, i) => (
-			<button key={i} alt={p["*"]}>
+			<button key={i} alt={p["*"]} onClick={p["*"]}>
 				{p["*"]}
 			</button>
 		));
