@@ -18,7 +18,6 @@ if (Meteor.isServer) {
   Meteor.methods({
     getData(query) {
       console.log(query);
-      // return [{data: "Hi!"}, {extra: "Hello!"}];
 
       return new Promise((resolve, reject) => {
         wikipedia.page.data(query, { content: true }, resolve);
@@ -32,7 +31,6 @@ Meteor.methods({
     check(text, String);
     console.log("hist.insert text: ", text);
 
-    // Make sure the user is logged in before inserting a task
     if (!this.userId) {
       throw new Meteor.Error("not-authorized");
     }
