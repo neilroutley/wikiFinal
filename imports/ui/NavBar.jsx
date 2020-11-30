@@ -14,7 +14,7 @@ class NavBar extends React.Component {
 
     this.state = {
       login: false,
-      signup: false
+      signup: false,
     };
   }
 
@@ -64,9 +64,9 @@ class NavBar extends React.Component {
                         className="rounded"
                         height="30px"
                         width="30px"
-                        src={`https://api.adorable.io/avatars/48/${Meteor.users
+                        src={`https://avatars.dicebear.com/api/human/${Meteor.users
                           .findOne(Meteor.userId())
-                          .emails[0].address.toLowerCase()}@adorable.io.png`}
+                          .emails[0].address.toLowerCase()}.svg`}
                         alt={
                           Meteor.users.findOne(Meteor.userId()).emails[0]
                             .address
@@ -126,6 +126,6 @@ class NavBar extends React.Component {
 
 export default withTracker(() => {
   return {
-    user: Meteor.user()
+    user: Meteor.user(),
   };
 })(NavBar);
