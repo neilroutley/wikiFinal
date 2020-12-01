@@ -14,11 +14,11 @@ The objective of this CS5610 final is to search wiki
 
 This webapp was built focusing on the following technologies:
 
--   Meteor
--   React
-- 	MongoDB
--	Wikipedia API
--	Bootstrap
+- Meteor
+- React
+-     MongoDB
+- Wikipedia API
+- Bootstrap
 
 ## Installation
 
@@ -31,7 +31,8 @@ $ meteor
 
 ## Links
 
-- [Website](https://neil-wikifinal.herokuapp.com/)
+<!-- - [Website](https://neil-wikifinal.herokuapp.com/) -->
+
 - [CS5610 Website](http://johnguerra.co/classes/webDevelopment_spring_2019/)
 
 ## License
@@ -40,7 +41,7 @@ This project is licensed under the MIT License - please see the [LICENSE](LICENS
 
 ## Author
 
--   [Neil Routley](https://github.com/neilroutley)
+- [Neil Routley](https://github.com/neilroutley)
 
 ## Grading
 
